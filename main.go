@@ -1,17 +1,13 @@
 package main
 
 import (
-	"os"
-
 	"github.com/whitejokeer/clevertitest/api"
-	datamanager "github.com/whitejokeer/clevertitest/database"
 )
 
 func main() {
-	port := os.Getenv("PORT")
-	dbConfig := datamanager.GetConfig()
+	port := "8080" // os.Getenv("PORT")
 
 	app := &api.App{}
-	app.Initialize(dbConfig)
+	app.Initialize()
 	app.Run(":" + port)
 }

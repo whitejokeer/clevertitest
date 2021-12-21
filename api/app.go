@@ -1,14 +1,12 @@
 package api
 
 import (
-	"fmt"
 	"log"
 	"net/http"
 
 	"github.com/gorilla/mux"
+	"github.com/jinzhu/gorm"
 	datamanager "github.com/whitejokeer/clevertitest/database"
-	"gorm.io/driver/postgres"
-	"gorm.io/gorm"
 )
 
 // App has router and db instances
@@ -18,21 +16,12 @@ type App struct {
 }
 
 // Initialize the app with predefined configuration
-func (a *App) Initialize(config *datamanager.Config) {
-	dbURI := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=disable TimeZone=UTC",
-		config.DB.Host,
-		config.DB.Username,
-		config.DB.Password,
-		config.DB.Name,
-		config.DB.Port,
-	)
-
-	db, err := gorm.Open(postgres.Open(dbURI), &gorm.Config{})
+func (a *App) Initialize() {
+	var err error
+	a.DB, err = datamanager.DatabaseInitialization()
 	if err != nil {
 		log.Fatal("Could not connect database")
 	}
-
-	a.DB = datamanager.DBMigrate(db)
 	a.Router = mux.NewRouter()
 	a.setRouters()
 }
@@ -40,6 +29,7 @@ func (a *App) Initialize(config *datamanager.Config) {
 // Set all required routers
 func (a *App) setRouters() {
 	// Routing for handling the projects
+	
 }
 
 // Get -> Wrap the router for GET method

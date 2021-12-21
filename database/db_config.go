@@ -1,28 +1,26 @@
 package datamanager
 
-import "os"
-
 type Config struct {
 	DB *DBConfig
 }
 
 type DBConfig struct {
-	Host            string
-	Port            string
-	Username        string
-	Password        string
-	Name            string
+	Host     string
+	Port     string
+	Username string
+	Password string
+	Name     string
 }
 
-// GetConfig -> Manage the Database connection Info
+// GetConfig -> Manage the Database connection Info (This is for a postgresql connection)
 func GetConfig() *Config {
 	return &Config{
 		DB: &DBConfig{
-			Host:            os.Getenv("DB_HOST"),
-			Port:            os.Getenv("DB_PORT"),
-			Username:        os.Getenv("DB_USERNAME"),
-			Password:        os.Getenv("DB_PASSWORD"),
-			Name:            os.Getenv("DB_NAME"),
+			Host:     "localhost", // os.Getenv("DB_HOST"),
+			Username: "cleverit",  // os.Getenv("DB_USERNAME"),
+			Port:     "5432",      // os.Getenv("DB_PORT"),
+			Password: "password",  // os.Getenv("DB_PASSWORD"),
+			Name:     "cervezas",  // os.Getenv("DB_NAME"),
 		},
 	}
 }
