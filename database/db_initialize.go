@@ -4,17 +4,12 @@ import (
 	"log"
 
 	"github.com/jinzhu/gorm"
+	_ "github.com/jinzhu/gorm/dialects/postgres"
 )
 
 // dbMigration -> Create and migrate the database tables with the required relationships
 func dbMigration(db *gorm.DB) *gorm.DB {
-	err := db.AutoMigrate(
-		&BeerItems{},
-	)
-	if err != nil {
-		log.Fatal("Error migrating the database")
-	}
-	log.Println("Database migration completed")
+	db = db.AutoMigrate(&BeerItems{})
 	return db
 }
 

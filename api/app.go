@@ -29,7 +29,9 @@ func (a *App) Initialize() {
 // Set all required routers
 func (a *App) setRouters() {
 	// Routing for handling the projects
-	
+	a.Get("/beers", a.getBeers)
+	a.Post("/beers", a.createBeerItem)
+	a.Get("/beers/{beerID}", a.getBeerByID)
 }
 
 // Get -> Wrap the router for GET method
