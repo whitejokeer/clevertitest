@@ -30,6 +30,7 @@ require (
 	github.com/jinzhu/gorm v1.9.16
 	github.com/jinzhu/inflection v1.0.0 // indirect
 	github.com/jinzhu/now v1.1.3 // indirect
+	github.com/joho/godotenv v1.4.0
 	github.com/stretchr/testify v1.7.0
 	gorm.io/driver/postgres v1.2.3
 )

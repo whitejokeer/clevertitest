@@ -28,10 +28,15 @@ func (a *App) Initialize() {
 
 // Set all required routers
 func (a *App) setRouters() {
+	a.Router.Queries([]string{"currency", "quantity"}...)
 	// Routing for handling the projects
 	a.Get("/beers", a.getBeers)
-	a.Post("/beers", a.createBeerItem)
 	a.Get("/beers/{beerID}", a.getBeerByID)
+	a.Get("/beers/{beerID}/boxprice", a.getBeerBoxPrice)
+	a.Post("/beers", a.createBeerItem)
+
+	a.Put("/beers", a.updateBeerItem)
+	a.Delete("/beers/{beerID}", a.deleteBeerItem)
 }
 
 // Get -> Wrap the router for GET method
