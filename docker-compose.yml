@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+
+  app:
+    container_name: events_api
+    build: .
+    ports:
+      - 8080:8080
+    restart: on-failure
+    environment:
+      PORT: 8080
+      DB_USERNAME: "cleverit"
+      DB_PASSWORD: "password"
+      DB_NAME: "cervezas"
+      DB_HOST: "db"
+      DB_PORT: "5432"
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+    links:
+      - db
+
+  db:
+    image: postgres
+    container_name: events_db
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_USER: "cleverit"
+      POSTGRES_PASSWORD: "password"
+      POSTGRES_DB: "cervezas"
+      TZ: 'UTC'
+      PGTZ: 'UTC'
