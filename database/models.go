@@ -2,7 +2,7 @@
 package datamanager
 
 type BeerItems struct {
-	Id       int     `gorm:"primaryKey;default:null"`
+	Id       int     `gorm:"primaryKey"`
 	Name     string  `gorm:"type:varchar(255);not null;default:null"`
 	Brewery  string  `gorm:"type:varchar(255);not null;default:null"`
 	Country  string  `gorm:"type:varchar(255);not null;default:null"`

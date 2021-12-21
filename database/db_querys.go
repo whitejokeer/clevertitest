@@ -2,7 +2,7 @@
 
 package datamanager
 
-import "github.com/jinzhu/gorm"
+import "gorm.io/gorm"
 
 type DataManager interface {
 	GetAllBeerItems() ([]BeerItems, error)

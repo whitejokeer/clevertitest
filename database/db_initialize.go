@@ -3,13 +3,16 @@ package datamanager
 import (
 	"log"
 
-	"github.com/jinzhu/gorm"
-	_ "github.com/jinzhu/gorm/dialects/postgres"
+	"gorm.io/driver/postgres"
+	"gorm.io/gorm"
 )
 
 // dbMigration -> Create and migrate the database tables with the required relationships
 func dbMigration(db *gorm.DB) *gorm.DB {
-	db = db.AutoMigrate(&BeerItems{})
+	err := db.AutoMigrate(&BeerItems{})
+	if err != nil {
+		log.Fatal("Could not migrate database")
+	}
 	return db
 }
 
@@ -23,7 +26,7 @@ func DatabaseInitialization() (*gorm.DB, error) {
 	config := GetConfig()
 	dbURI := CreateConnectionString(config.DB)
 
-	db, err := gorm.Open("postgres", dbURI)
+	db, err := gorm.Open(postgres.Open(dbURI), &gorm.Config{})
 	if err != nil {
 		log.Fatal("Could not connect database")
 	}

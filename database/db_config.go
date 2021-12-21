@@ -1,5 +1,7 @@
 package datamanager
 
+import "os"
+
 type Config struct {
 	DB *DBConfig
 }
@@ -16,11 +18,11 @@ type DBConfig struct {
 func GetConfig() *Config {
 	return &Config{
 		DB: &DBConfig{
-			Host:     "localhost", // os.Getenv("DB_HOST"),
-			Username: "cleverit",  // os.Getenv("DB_USERNAME"),
-			Port:     "5432",      // os.Getenv("DB_PORT"),
-			Password: "password",  // os.Getenv("DB_PASSWORD"),
-			Name:     "cervezas",  // os.Getenv("DB_NAME"),
+			Host:     os.Getenv("DB_HOST"),
+			Username: os.Getenv("DB_USERNAME"),
+			Port:     os.Getenv("DB_PORT"),
+			Password: os.Getenv("DB_PASSWORD"),
+			Name:     os.Getenv("DB_NAME"),
 		},
 	}
 }

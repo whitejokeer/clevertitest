@@ -6,8 +6,8 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/jinzhu/gorm"
 	datamanager "github.com/whitejokeer/clevertitest/database"
+	"gorm.io/gorm"
 )
 
 // GetAllBeers gets all the beers from the database

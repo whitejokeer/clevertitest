@@ -22,6 +22,11 @@ GET /beers/{beerID}/boxprice: Entrega el valor que cuesta una caja especifica de
 ## Desarrollo
 - [Repositorio en Github.](https://github.com/whitejokeer/clevertitest)
 
+## Ejecución
+- Para correr este programa se debe ejecutar el siguiente comando:
+```
+docker-compose up
+```
 
 
 

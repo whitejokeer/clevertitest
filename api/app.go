@@ -5,8 +5,8 @@ import (
 	"net/http"
 
 	"github.com/gorilla/mux"
-	"github.com/jinzhu/gorm"
 	datamanager "github.com/whitejokeer/clevertitest/database"
+	"gorm.io/gorm"
 )
 
 // App has router and db instances
