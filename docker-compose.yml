@@ -10,12 +10,12 @@ services:
     restart: on-failure
     environment:
       PORT: 8080
-      DB_USERNAME: "cleverit"
-      DB_PASSWORD: "password"
-      DB_NAME: "cervezas"
-      DB_HOST: "db"
-      DB_PORT: "5432"
-      CURRENCY_LAYER_API_KEY: "c6a6d16760b22a0b65415e7c1e579ad9"
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME}
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+      CURRENCY_LAYER_API_KEY: ${CURRENCY_LAYER_API_KEY}
     volumes:
       - .:/app
     depends_on:
@@ -29,8 +29,8 @@ services:
     ports:
       - '5432:5432'
     environment:
-      POSTGRES_USER: "cleverit"
-      POSTGRES_PASSWORD: "password"
-      POSTGRES_DB: "cervezas"
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
       TZ: 'UTC'
       PGTZ: 'UTC'
